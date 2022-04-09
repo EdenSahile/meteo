@@ -3,6 +3,7 @@ import React from 'react'
 export const SearchBar = ({
   change,
   submit,
+  input
 
 }) => {
   return (
@@ -20,6 +21,8 @@ export const SearchBar = ({
                     type="search"
                     placeholder="Search ..."
                     onChange={change}
+                    value={input}
+                 
                     
                       
                       />

@@ -17,6 +17,7 @@ export default class App extends Component {
       baseURL :'https://api.openweathermap.org/data/2.5/weather?',
 
       APIkey:'f09a8654d3fc3b74ab1b6d8613069f0a',
+      lang:"&lang=fr",
       input:'paris',
       forecast:{}
 
@@ -25,9 +26,9 @@ export default class App extends Component {
 
 
 
-  // componentDidMount(){
-  //   this.query()
-  // }
+  componentDidMount(){
+    this.query()
+  }
 
   handleChange(e){
     console.log(e.target.value)
@@ -39,6 +40,7 @@ export default class App extends Component {
   handleSubmit(e){
     e.preventDefault()
     this.query()
+   
  
   }
 
@@ -46,7 +48,7 @@ export default class App extends Component {
   query(){
 
 
-    let url =this.state.baseURL+"q="+this.state.input+"&appid="+this.state.APIkey
+    let url =this.state.baseURL+"q="+this.state.input+"&appid="+this.state.APIkey+this.state.lang
 
 
     fetch(url)
@@ -84,12 +86,19 @@ export default class App extends Component {
         }
 
       
-
-
     this.setState({
-      forecast:forecast
+      forecast:forecast,
+   
   })
+      
+    this.setState({
+     input:'',
+   
   })
+
+  
+  })
+  
 
 
 }
@@ -99,9 +108,9 @@ export default class App extends Component {
     return(
 
         <div>
-      <SearchBar  change={(e)=>this.handleChange(e)} submit={(e)=>this.handleSubmit(e)} />
+      <SearchBar  input={this.state.input} change={(e)=>this.handleChange(e)} submit={(e)=>this.handleSubmit(e)} />
 
-      <Main forecast={this.state.forecast}/>
+      <Main forecast={this.state.forecast} />
       <Footer/>
 
       </div>
