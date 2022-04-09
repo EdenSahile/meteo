@@ -1,9 +1,9 @@
 import React from 'react'
 
 export const SearchBar = ({
-
   change,
-  submit
+  submit,
+
 }) => {
   return (
 

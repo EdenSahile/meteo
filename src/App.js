@@ -15,8 +15,10 @@ export default class App extends Component {
     this.state={
 
       baseURL :'https://api.openweathermap.org/data/2.5/weather?',
+
       APIkey:'f09a8654d3fc3b74ab1b6d8613069f0a',
-      input:'paris'
+      input:'paris',
+      forecast:{}
 
     }
   }
@@ -59,8 +61,36 @@ export default class App extends Component {
       })
       .then(data=>{
         console.log(data)
-    
+        
+        let weather=data.weather[0];
+       let description = weather.description;
+        let icon = weather.icon
+         let main=data.main;
+        let temp=main.temp;
+
+        let sys= data.sys;
+        let country=sys.country;
+
+        let name=data.name;
+        let date=data.timezone
+
+        let forecast={
+
+          name:name,
+          date:date,
+          icon:icon,
+          temp:temp,
+          description:description
+        }
+
+      
+
+
+    this.setState({
+      forecast:forecast
   })
+  })
+
 
 }
 
@@ -69,9 +99,9 @@ export default class App extends Component {
     return(
 
         <div>
-      <SearchBar change={(e)=>this.handleChange(e)} submit={(e)=>this.handleSubmit(e)}/>
+      <SearchBar  change={(e)=>this.handleChange(e)} submit={(e)=>this.handleSubmit(e)} />
 
-      <Main/>
+      <Main forecast={this.state.forecast}/>
       <Footer/>
 
       </div>
