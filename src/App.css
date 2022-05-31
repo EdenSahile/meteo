@@ -144,6 +144,11 @@ nav#vertical {
 	content: '\00b0'; /* Degree symbol */
 	padding: 1px;
 }
+
+.button-submit{
+	background-color:#5299d2;
+	color:whitesmoke;
+}
 /* locateBtn Pulse Animation */
 #locateBtn.pulse {
 	animation: pulse 2s infinite;
@@ -239,6 +244,8 @@ nav#vertical {
 		padding-bottom: 15%;
 		padding-top: 15%;
 	}
+
+
 }
 @media (min-width: 550px) {
 	nav#vertical { top: 8%; }
@@ -286,6 +293,14 @@ nav#vertical {
 	}
 }
 @media (min-width: 880px) {
+
+
+
+	.button-submit{
+		display: none;
+
+
+	}
 	nav#vertical#vertical { top: 5%; }
 	#current {
 		font-size: 1.5rem;

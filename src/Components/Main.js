@@ -3,6 +3,7 @@ import React from 'react'
 export const Main = ({
 
   forecast,
+  getItem
  
 
 }) => {
@@ -33,7 +34,8 @@ const Format=()=>{
 
       <p className='conditions'>{forecast.description}</p>
 
+        </div>
+           
+    )
 
-    </div>
-  )
 }

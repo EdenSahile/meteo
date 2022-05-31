@@ -28,8 +28,22 @@ export default class App extends Component {
 
   componentDidMount(){
     this.query()
-  }
+    let input= JSON.parse(localStorage.getItem('item'))
 
+    this.setState({
+      input:input
+    })
+
+
+    
+  }
+handleGetItem(){
+let input = JSON.parse(localStorage.getItem('item'))
+ this.setState({
+      input:input
+     })
+
+}
   handleChange(e){
     console.log(e.target.value)
     this.setState({
@@ -96,6 +110,13 @@ export default class App extends Component {
    
   })
 
+  const Forecast=forecast;
+  const myForecast=JSON.stringify(Forecast);
+
+
+  localStorage.setItem('item', myForecast)
+
+
   
   })
   
@@ -110,7 +131,7 @@ export default class App extends Component {
         <div>
       <SearchBar  input={this.state.input} change={(e)=>this.handleChange(e)} submit={(e)=>this.handleSubmit(e)} />
 
-      <Main forecast={this.state.forecast} />
+      <Main forecast={this.state.forecast} getItem={this.handleGetItem} />
       <Footer/>
 
       </div>
